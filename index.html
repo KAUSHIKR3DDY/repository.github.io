@@ -12,7 +12,7 @@
           let secret = document.getElementById("secret").value.toLowerCase().replace(/ /g, "");
           if (!/^[a-z0-9]{16}$/.test(secret)) return display("Invalid secret!");
           
-          let otp = new jsOtp.totp().getOtp(secret);
+          let otp = new jsOTP.totp().getOtp(secret);
           display(otp);
       }
     </script>
