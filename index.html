@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TOTP thing.</title>
+    <script src="https://cdn.jsdelivr.net/gh/jiangts/JS-OTP@master/dist/jsOTP.min.js" integrity="sha384-CA04U8CkvCN/oIGadlX88aooocYG0NSYa6kDgBhai5qb4sHDu8t6tcg8Qqp/B/Ci" crossorigin="anonymous"></script>
+    <script>
+      function display(str) {
+        document.getElementById("output").innerHTML = str;
+      }
+      
+      function generate() {
+          let secret = document.getElementById("secret").value.toLowerCase().replace(/ /g, "");
+          if (!/^[a-z0-9]{16}$/.test(secret)) return display("Invalid secret!");
+          
+          let otp = new jsOtp.totp().getOtp(secret);
+          display(otp);
+      }
+    </script>
+  </head>
+  <body>
+    <input type="text" placeholder="secret" id="secret"> <button onclick="generate">Get OTP</button>
+    <div id="output"></div>
+  </body>
